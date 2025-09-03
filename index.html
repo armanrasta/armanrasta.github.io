@@ -11,147 +11,272 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
+            background-color: #030712; /* A deeper gray-950 */
+        }
+        /* Custom styles for the timeline */
+        .timeline-item {
+            position: relative;
+            padding-left: 2.5rem;
+            padding-bottom: 2.5rem;
+            border-left: 2px solid #1f2937; /* gray-800 */
+        }
+        .timeline-item:last-child {
+            border-left: 2px solid transparent;
+            padding-bottom: 0;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: -0.625rem; /* Adjust to center the dot on the line */
+            top: 0.25rem;
+            height: 1.125rem;
+            width: 1.125rem;
+            background-color: #3b82f6; /* blue-500 */
+            border-radius: 9999px;
+            border: 3px solid #030712; /* bg-gray-950 */
+        }
+        /* Styles for active/inactive project tabs */
+        .project-tab.active {
+            background-color: #2563eb; /* blue-600 */
+            color: #ffffff;
         }
     </style>
 </head>
 
-<body class="bg-gray-900 text-white">
+<body class="text-gray-200">
 
     <!-- Header -->
-    <header class="fixed w-full z-10 bg-gray-900 bg-opacity-80 backdrop-blur-md">
+    <header class="fixed w-full z-10 bg-gray-950/80 backdrop-blur-sm border-b border-gray-800">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">Arman Rostami</a>
-            <nav class="hidden md:flex space-x-8">
-                <a href="#home" class="hover:text-cyan-400 transition-colors">Home</a>
-                <a href="#about" class="hover:text-cyan-400 transition-colors">About</a>
-                <a href="#works" class="hover:text-cyan-400 transition-colors">Works</a>
-                <a href="#contact" class="hover:text-cyan-400 transition-colors">Contact</a>
+            <a href="#" class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">Arman Rostami</a>
+            <nav class="hidden md:flex space-x-8 text-sm font-medium">
+                <a href="#home" class="text-gray-300 hover:text-blue-400 transition-colors">Home</a>
+                <a href="#about" class="text-gray-300 hover:text-blue-400 transition-colors">About</a>
+                <a href="#experience" class="text-gray-300 hover:text-blue-400 transition-colors">Experience</a>
+                <a href="#projects" class="text-gray-300 hover:text-blue-400 transition-colors">Projects</a>
+                <a href="#contact" class="text-gray-300 hover:text-blue-400 transition-colors">Contact</a>
             </nav>
-            <button id="mobile-menu-button" class="md:hidden">
+            <button id="mobile-menu-button" class="md:hidden text-gray-300">
                 <i data-lucide="menu" class="w-6 h-6"></i>
             </button>
         </div>
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-gray-800">
-            <a href="#home" class="block py-2 px-4 text-sm hover:bg-gray-700">Home</a>
-            <a href="#about" class="block py-2 px-4 text-sm hover:bg-gray-700">About</a>
-            <a href="#works" class="block py-2 px-4 text-sm hover:bg-gray-700">Works</a>
-            <a href="#contact" class="block py-2 px-4 text-sm hover:bg-gray-700">Contact</a>
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-900 border-t border-gray-800">
+            <a href="#home" class="block py-3 px-6 text-sm hover:bg-gray-800">Home</a>
+            <a href="#about" class="block py-3 px-6 text-sm hover:bg-gray-800">About</a>
+            <a href="#experience" class="block py-3 px-6 text-sm hover:bg-gray-800">Experience</a>
+            <a href="#projects" class="block py-3 px-6 text-sm hover:bg-gray-800">Projects</a>
+            <a href="#contact" class="block py-3 px-6 text-sm hover:bg-gray-800">Contact</a>
         </div>
     </header>
 
     <main>
         <!-- Home Section -->
-        <section id="home" class="h-screen flex items-center justify-center text-center bg-cover bg-center" style="background-image: linear-gradient(rgba(17, 24, 39, 0.8), rgba(17, 24, 39, 0.8)), url('https://placehold.co/1920x1080/111827/ffffff?text=Arman+Rostami');">
-            <div class="container mx-auto px-6">
-                <h1 class="text-5xl md:text-7xl font-extrabold mb-4 leading-tight">
+        <section id="home" class="min-h-screen flex items-center bg-grid-gray-800/[0.2]">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-5xl md:text-7xl font-extrabold mb-4 leading-tight text-transparent bg-clip-text bg-gradient-to-br from-white to-gray-400">
                     Fullstack & AI Engineer
                 </h1>
-                <p class="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-                    A problem-solving CTO transforming complex technical requirements into high-impact, intelligent solutions.
+                <p class="text-lg md:text-xl text-gray-400 mb-10 max-w-3xl mx-auto">
+                    A problem-solving CTO transforming complex technical requirements into deployable, high-impact solutions with deep expertise in Computer Vision, IoT, and system architecture.
                 </p>
-                <a href="#works" class="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-bold py-3 px-8 rounded-full transition-transform transform hover:scale-105">
-                    View My Work
+                <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105">
+                    Get In Touch
                 </a>
             </div>
         </section>
 
         <!-- About Section -->
-        <section id="about" class="py-20 bg-gray-800">
+        <section id="about" class="py-24 bg-gray-900">
             <div class="container mx-auto px-6">
-                <h2 class="text-4xl font-bold text-center mb-12">About Me</h2>
-                <div class="flex flex-col md:flex-row items-center gap-12">
-                    <div class="md:w-1/3">
-                        <img src="https://placehold.co/400x400/374151/ffffff?text=Arman+Rostami" alt="Arman Rostami" class="rounded-full shadow-2xl mx-auto w-64 h-64 md:w-full md:h-auto object-cover">
+                 <h2 class="text-4xl font-bold text-center mb-16">About Me</h2>
+                <div class="flex flex-col md:flex-row items-start gap-12">
+                    <div class="md:w-1/3 flex-shrink-0">
+                        <img src="https://github.com/armanrasta.png" alt="Arman Rostami" class="rounded-lg shadow-2xl mx-auto" onerror="this.onerror=null;this.src='https://placehold.co/400x400/1f2937/ffffff?text=Arman+Rostami';">
                     </div>
                     <div class="md:w-2/3">
-                        <h3 class="text-3xl font-semibold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">Who am I?</h3>
-                        <p class="text-gray-300 mb-4 leading-relaxed">
-                            I'm a CTO and AI Engineer who excels at transforming complex technical requirements into deployable, high-impact solutions. With 3 years of experience, I have a proven track record of leading teams to build Computer Vision and IoT systems that significantly reduce safety risks and improve business KPIs.
+                        <h3 class="text-3xl font-semibold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">Chief Technology Officer & AI Engineer</h3>
+                        <p class="text-gray-400 mb-6 leading-relaxed">
+                            With 3 years of experience leading teams and architecting high-impact systems, I specialize in building robust, intelligent products. My background in embedded AI and systems programming allows me to deliver solutions that significantly reduce safety risks and improve business KPIs. I am passionate about system architecture, real-time data processing, and pushing the boundaries of technology.
                         </p>
-                        <p class="text-gray-300 leading-relaxed">
-                           My goal is to leverage deep expertise in embedded AI and systems programming to build the robust, intelligent products that will define a company's future. I'm passionate about system architecture, real-time data processing, and pushing the boundaries of what's possible with technology.
-                        </p>
-                        <div class="mt-8">
-                            <h4 class="text-xl font-semibold mb-4">Technical Skills</h4>
-                            <div class="flex flex-wrap gap-3">
-                                <span class="bg-gray-700 text-sm font-medium px-4 py-2 rounded-full">Python</span>
-                                <span class="bg-gray-700 text-sm font-medium px-4 py-2 rounded-full">JS/TS</span>
-                                <span class="bg-gray-700 text-sm font-medium px-4 py-2 rounded-full">Go</span>
-                                <span class="bg-gray-700 text-sm font-medium px-4 py-2 rounded-full">Rust</span>
-                                <span class="bg-gray-700 text-sm font-medium px-4 py-2 rounded-full">Java</span>
-                                <span class="bg-gray-700 text-sm font-medium px-4 py-2 rounded-full">PyTorch</span>
-                                <span class="bg-gray-700 text-sm font-medium px-4 py-2 rounded-full">Computer Vision</span>
-                                <span class="bg-gray-700 text-sm font-medium px-4 py-2 rounded-full">FastAPI</span>
-                                <span class="bg-gray-700 text-sm font-medium px-4 py-2 rounded-full">Django/DRF</span>
-                                <span class="bg-gray-700 text-sm font-medium px-4 py-2 rounded-full">React/Next.js</span>
-                                <span class="bg-gray-700 text-sm font-medium px-4 py-2 rounded-full">Vite.js</span>
-                                <span class="bg-gray-700 text-sm font-medium px-4 py-2 rounded-full">Docker</span>
-                                <span class="bg-gray-700 text-sm font-medium px-4 py-2 rounded-full">Kubernetes</span>
-                                <span class="bg-gray-700 text-sm font-medium px-4 py-2 rounded-full">Linux</span>
-                                <span class="bg-gray-700 text-sm font-medium px-4 py-2 rounded-full">Jenkins</span>
-                                <span class="bg-gray-700 text-sm font-medium px-4 py-2 rounded-full">IoT & Embedded</span>
-                                <span class="bg-gray-700 text-sm font-medium px-4 py-2 rounded-full">Arduino</span>
-                                <span class="bg-gray-700 text-sm font-medium px-4 py-2 rounded-full">GStreamer</span>
-                                <span class="bg-gray-700 text-sm font-medium px-4 py-2 rounded-full">Solana</span>
-                            </div>
+                        <h4 class="text-xl font-semibold mb-4 text-white">Core Competencies</h4>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="bg-gray-800 border border-gray-700 text-sm font-medium px-4 py-2 rounded-md">Python</span>
+                            <span class="bg-gray-800 border border-gray-700 text-sm font-medium px-4 py-2 rounded-md">Go</span>
+                            <span class="bg-gray-800 border border-gray-700 text-sm font-medium px-4 py-2 rounded-md">Rust</span>
+                            <span class="bg-gray-800 border border-gray-700 text-sm font-medium px-4 py-2 rounded-md">C/C++</span>
+                            <span class="bg-gray-800 border border-gray-700 text-sm font-medium px-4 py-2 rounded-md">TypeScript</span>
+                            <span class="bg-gray-800 border border-gray-700 text-sm font-medium px-4 py-2 rounded-md">PyTorch</span>
+                            <span class="bg-gray-800 border border-gray-700 text-sm font-medium px-4 py-2 rounded-md">TensorFlow</span>
+                            <span class="bg-gray-800 border border-gray-700 text-sm font-medium px-4 py-2 rounded-md">LangChain</span>
+                            <span class="bg-gray-800 border border-gray-700 text-sm font-medium px-4 py-2 rounded-md">Computer Vision</span>
+                            <span class="bg-gray-800 border border-gray-700 text-sm font-medium px-4 py-2 rounded-md">React/Next.js</span>
+                            <span class="bg-gray-800 border border-gray-700 text-sm font-medium px-4 py-2 rounded-md">FastAPI</span>
+                            <span class="bg-gray-800 border border-gray-700 text-sm font-medium px-4 py-2 rounded-md">Django</span>
+                            <span class="bg-gray-800 border border-gray-700 text-sm font-medium px-4 py-2 rounded-md">PostgreSQL</span>
+                            <span class="bg-gray-800 border border-gray-700 text-sm font-medium px-4 py-2 rounded-md">Docker & Kubernetes</span>
+                            <span class="bg-gray-800 border border-gray-700 text-sm font-medium px-4 py-2 rounded-md">Jenkins</span>
+                            <span class="bg-gray-800 border border-gray-700 text-sm font-medium px-4 py-2 rounded-md">AWS</span>
+                            <span class="bg-gray-800 border border-gray-700 text-sm font-medium px-4 py-2 rounded-md">IoT & Embedded</span>
+                            <span class="bg-gray-800 border border-gray-700 text-sm font-medium px-4 py-2 rounded-md">GStreamer</span>
+                            <span class="bg-gray-800 border border-gray-700 text-sm font-medium px-4 py-2 rounded-md">Solana</span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Works Section -->
-        <section id="works" class="py-20 bg-gray-900">
+        <!-- Experience Section -->
+        <section id="experience" class="py-24 bg-gray-950">
             <div class="container mx-auto px-6">
-                <h2 class="text-4xl font-bold text-center mb-12">Featured Work</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Project 1 -->
-                    <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300 flex flex-col">
-                        <img src="https://placehold.co/600x400/374151/ffffff?text=NeoSafe+HSE" alt="NeoSafe HSE Platform" class="w-full h-56 object-cover">
-                        <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="text-2xl font-bold mb-2">NeoSafe HSE Platform</h3>
-                            <p class="text-gray-400 mb-4 flex-grow">Architected and built a complete Health, Safety, and Environment platform with a GStreamer video pipeline, FastAPI backend, and a real-time Vite/WebRTC dashboard.</p>
-                            <a href="https://github.com/armanrasta" target="_blank" class="text-cyan-400 hover:underline mt-auto">View on GitHub &rarr;</a>
+                <h2 class="text-4xl font-bold text-center mb-16">Professional Experience</h2>
+                <div class="max-w-3xl mx-auto">
+                    <!-- Timeline Item 1 -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <p class="font-semibold text-gray-500 text-sm">Jan 2025 - Present</p>
+                        <h3 class="text-xl font-bold mt-1 text-white">Chief Technology Officer</h3>
+                        <p class="text-blue-400 font-medium">Gam Energy</p>
+                        <ul class="mt-3 list-disc list-inside text-gray-400 space-y-2 text-sm">
+                            <li>Architected and built the "NeoSafe" HSE platform from the ground up, securing a major deployment contract.</li>
+                            <li>Engineered an integrated smart hardhat with embedded CV/sensors, cutting near-miss events by 60%.</li>
+                            <li>Oversaw an elderly health monitoring platform, developing a Wear OS app and LangChain RAG system.</li>
+                        </ul>
+                    </div>
+                    <!-- Timeline Item 2 -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <p class="font-semibold text-gray-500 text-sm">Jan 2024 - Dec 2024</p>
+                        <h3 class="text-xl font-bold mt-1 text-white">Full-Stack Developer</h3>
+                        <p class="text-blue-400 font-medium">Rastak S.V.</p>
+                         <ul class="mt-3 list-disc list-inside text-gray-400 space-y-2 text-sm">
+                            <li>Built an SCM forecasting system in Odoo.</li>
+                            <li>Engineered a document automation platform using Next.js, WebDAV, and MinIO.</li>
+                        </ul>
+                    </div>
+                    <!-- Timeline Item 3 -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <p class="font-semibold text-gray-500 text-sm">Jan 2023 - Jan 2024</p>
+                        <h3 class="text-xl font-bold mt-1 text-white">Back-End Developer</h3>
+                        <p class="text-blue-400 font-medium">Nexus Bin</p>
+                        <ul class="mt-3 list-disc list-inside text-gray-400 space-y-2 text-sm">
+                           <li>Developed a scalable e-commerce backend with Django REST Framework.</li>
+                           <li>Built a real-time order processing system and integrated Solana smart contracts.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-24 bg-gray-900">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center mb-12">Projects</h2>
+                
+                <!-- Project Tabs -->
+                <div id="project-tabs" class="flex justify-center mb-12 space-x-2 md:space-x-4 bg-gray-950 p-2 rounded-lg max-w-md mx-auto">
+                    <button data-target="featured-projects" class="project-tab active w-full text-center font-medium px-4 py-2 rounded-md transition-colors duration-300">Featured</button>
+                    <button data-target="software-projects" class="project-tab w-full text-center font-medium px-4 py-2 rounded-md transition-colors duration-300 text-gray-400 hover:bg-gray-800">Software & AI</button>
+                    <button data-target="iot-projects" class="project-tab w-full text-center font-medium px-4 py-2 rounded-md transition-colors duration-300 text-gray-400 hover:bg-gray-800">IoT & Hardware</button>
+                </div>
+
+                <!-- Projects Grids -->
+                <div class="max-w-5xl mx-auto">
+                    <!-- Featured Projects Grid -->
+                    <div id="featured-projects" class="project-grid grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="bg-gray-950 border border-gray-800 rounded-lg p-6 flex flex-col hover:border-blue-500 transition-colors">
+                            <h3 class="text-2xl font-bold mb-2 text-white">NeoSafe HSE Platform</h3>
+                            <p class="text-gray-400 mb-4 flex-grow">Architected a complete Health, Safety, and Environment platform with a GStreamer video pipeline, FastAPI backend, and a real-time Vite/WebRTC dashboard.</p>
+                            <a href="https://github.com/armanrasta" target="_blank" class="text-blue-400 hover:underline mt-auto font-medium">View on GitHub &rarr;</a>
+                        </div>
+                        <div class="bg-gray-950 border border-gray-800 rounded-lg p-6 flex flex-col hover:border-blue-500 transition-colors">
+                            <h3 class="text-2xl font-bold mb-2 text-white">Integrated Smart Hardhat</h3>
+                            <p class="text-gray-400 mb-4 flex-grow">Engineered an IoT hardhat with embedded CV and sensors on ESP32/STM32. Developed firmware in Rust & C++ and contributed to PCB design.</p>
+                            <a href="https://github.com/armanrasta" target="_blank" class="text-blue-400 hover:underline mt-auto font-medium">View on GitHub &rarr;</a>
+                        </div>
+                         <div class="bg-gray-950 border border-gray-800 rounded-lg p-6 flex flex-col hover:border-blue-500 transition-colors">
+                            <h3 class="text-2xl font-bold mb-2 text-white">Snakers - Python Learning Tool</h3>
+                            <p class="text-gray-400 mb-4 flex-grow">Published an open-source Python package on PyPI to help junior developers learn Python interactively. Validated with the Ruff linter.</p>
+                            <a href="https://github.com/armanrasta/snakers" target="_blank" class="text-blue-400 hover:underline mt-auto font-medium">View on GitHub &rarr;</a>
+                        </div>
+                         <div class="bg-gray-950 border border-gray-800 rounded-lg p-6 flex flex-col hover:border-blue-500 transition-colors">
+                            <h3 class="text-2xl font-bold mb-2 text-white">Elderly Health Monitoring</h3>
+                            <p class="text-gray-400 mb-4 flex-grow">Developed a Wear OS app, designed a BILSTM-CNN model, and managed the team on a FastAPI/Next.js stack with a LangChain RAG system.</p>
+                            <a href="https://github.com/armanrasta" target="_blank" class="text-blue-400 hover:underline mt-auto font-medium">View on GitHub &rarr;</a>
                         </div>
                     </div>
-                    <!-- Project 2 -->
-                    <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300 flex flex-col">
-                        <img src="https://placehold.co/600x400/374151/ffffff?text=Snakers" alt="Snakers Python Package" class="w-full h-56 object-cover">
-                        <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="text-2xl font-bold mb-2">Snakers - Python Learning Tool</h3>
-                            <p class="text-gray-400 mb-4 flex-grow">Developed and published an open-source Python package on PyPI to help junior developers learn Python interactively. Validated with the Ruff linter.</p>
-                            <a href="https://github.com/armanrasta/snakers" target="_blank" class="text-cyan-400 hover:underline mt-auto">View on GitHub &rarr;</a>
-                            <a href="https://pypi.org/project/snakers" target="_blank" class="text-cyan-400 hover:underline mt-auto">View on PyPi &rarr;</a>
+                    <!-- Software Projects Grid -->
+                    <div id="software-projects" class="project-grid hidden grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="bg-gray-950 border border-gray-800 rounded-lg p-6 flex flex-col hover:border-blue-500 transition-colors">
+                            <h3 class="text-xl font-bold mb-2 text-white">E-commerce Backend</h3>
+                            <p class="text-gray-400 mb-4 flex-grow text-sm">Developed a scalable e-commerce backend with Django REST Framework and a real-time order processing system.</p>
+                            <a href="https://github.com/armanrasta" target="_blank" class="text-blue-400 hover:underline mt-auto font-medium">View on GitHub &rarr;</a>
+                        </div>
+                        <div class="bg-gray-950 border border-gray-800 rounded-lg p-6 flex flex-col hover:border-blue-500 transition-colors">
+                            <h3 class="text-xl font-bold mb-2 text-white">Solana Smart Contracts</h3>
+                            <p class="text-gray-400 mb-4 flex-grow text-sm">Integrated Solana smart contracts for a decentralized e-commerce experience.</p>
+                            <a href="https://github.com/armanrasta" target="_blank" class="text-blue-400 hover:underline mt-auto font-medium">View on GitHub &rarr;</a>
+                        </div>
+                         <div class="bg-gray-950 border border-gray-800 rounded-lg p-6 flex flex-col hover:border-blue-500 transition-colors">
+                            <h3 class="text-xl font-bold mb-2 text-white">SCM Forecasting System</h3>
+                            <p class="text-gray-400 mb-4 flex-grow text-sm">Built a supply chain management forecasting system within the Odoo ERP framework.</p>
+                            <a href="https://github.com/armanrasta" target="_blank" class="text-blue-400 hover:underline mt-auto font-medium">View on GitHub &rarr;</a>
+                        </div>
+                        <div class="bg-gray-950 border border-gray-800 rounded-lg p-6 flex flex-col hover:border-blue-500 transition-colors">
+                            <h3 class="text-xl font-bold mb-2 text-white">Document Automation Platform</h3>
+                            <p class="text-gray-400 mb-4 flex-grow text-sm">Engineered a document platform using Next.js, WebDAV, MinIO, and SVN for version control.</p>
+                            <a href="https://github.com/armanrasta" target="_blank" class="text-blue-400 hover:underline mt-auto font-medium">View on GitHub &rarr;</a>
                         </div>
                     </div>
-                    <!-- Project 3 -->
-                    <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300 flex flex-col">
-                        <img src="https://placehold.co/600x400/374151/ffffff?text=Smart+Hardhat" alt="Smart Hardhat Project" class="w-full h-56 object-cover">
-                        <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="text-2xl font-bold mb-2">Integrated Smart Hardhat</h3>
-                            <p class="text-gray-400 mb-4 flex-grow">Engineered an IoT hardhat with embedded CV and sensors on ESP32/STM32. Developed firmware in Rust & C++ and contributed to PCB design, cutting near-miss events by 60%.</p>
-                            <a href="https://github.com/armanrasta" target="_blank" class="text-cyan-400 hover:underline mt-auto">View on GitHub &rarr;</a>
+                    <!-- IoT Projects Grid -->
+                    <div id="iot-projects" class="project-grid hidden grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="bg-gray-950 border border-gray-800 rounded-lg p-6 flex flex-col hover:border-blue-500 transition-colors">
+                            <h3 class="text-xl font-bold mb-2 text-white">'Smart Asphalt' De-icing</h3>
+                            <p class="text-gray-400 mb-4 flex-grow text-sm">Developed a system using a Rust app on a Raspberry Pi to process sensor data with an embedded AI model and trigger a Go backend for de-icing roads.</p>
+                            <a href="https://github.com/armanrasta" target="_blank" class="text-blue-400 hover:underline mt-auto font-medium">View on GitHub &rarr;</a>
+                        </div>
+                        <div class="bg-gray-950 border border-gray-800 rounded-lg p-6 flex flex-col hover:border-blue-500 transition-colors">
+                            <h3 class="text-xl font-bold mb-2 text-white">Smart Hardhat Firmware</h3>
+                            <p class="text-gray-400 mb-4 flex-grow text-sm">Developed firmware in Rust & C++ for ESP32 & STM32 microcontrollers and contributed to the PCB design for an industrial safety hardhat.</p>
+                            <a href="https://github.com/armanrasta" target="_blank" class="text-blue-400 hover:underline mt-auto font-medium">View on GitHub &rarr;</a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+
+        <!-- Patents Section -->
+        <section id="patents" class="py-24 bg-gray-950">
+            <div class="container mx-auto px-6 text-center">
+                 <h2 class="text-4xl font-bold mb-10">Patents</h2>
+                 <div class="max-w-3xl mx-auto bg-gray-900 border border-gray-800 rounded-lg p-8 shadow-lg text-left flex items-center gap-6">
+                    <div class="flex-shrink-0">
+                        <i data-lucide="award" class="w-12 h-12 text-blue-400"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-white">Intelligent Drilling System for Explosive Gas Detection</h3>
+                        <p class="text-gray-400 mt-2">An IoT-based system using real-time sensor data for on-site analysis to enhance safety.</p>
+                        <span class="inline-block bg-gray-800 text-blue-300 text-sm font-medium px-3 py-1 rounded-full mt-4">Patent Pending</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
 
         <!-- Contact Section -->
-        <section id="contact" class="py-20 bg-gray-800">
+        <section id="contact" class="py-24 bg-gray-900">
             <div class="container mx-auto px-6 text-center">
-                <h2 class="text-4xl font-bold mb-4">Get In Touch</h2>
-                <p class="text-gray-300 mb-8 max-w-2xl mx-auto">I'm always open to new opportunities and collaborations. If you have a project in mind or just want to connect, feel free to reach out.</p>
-                <a href="mailto:armanrostami@outlook.com" class="inline-block bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-bold py-3 px-8 rounded-full transition-transform transform hover:scale-105 mb-8">
-                    Say Hello
+                <h2 class="text-4xl font-bold mb-4 text-white">Get In Touch</h2>
+                <p class="text-gray-400 mb-8 max-w-2xl mx-auto">I'm currently available for new opportunities and collaborations. If you have a project in mind or just want to connect, I'd be glad to hear from you.</p>
+                <a href="mailto:armanrostami@outlook.com" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 mb-10">
+                    armanrostami@outlook.com
                 </a>
                 <div class="flex justify-center space-x-6">
-                    <a href="https://github.com/armanrasta" target="_blank" class="text-gray-400 hover:text-white transition-colors">
-                        <i data-lucide="github" class="w-8 h-8"></i>
+                    <a href="https://github.com/armanrasta" target="_blank" class="text-gray-500 hover:text-white transition-colors">
+                        <i data-lucide="github" class="w-7 h-7"></i>
                     </a>
-                    <a href="https://www.linkedin.com/in/arman--rostami/" target="_blank" class="text-gray-400 hover:text-white transition-colors">
-                        <i data-lucide="linkedin" class="w-8 h-8"></i>
+                    <a href="https://www.linkedin.com/in/arman-rostami-dev/" target="_blank" class="text-gray-500 hover:text-white transition-colors">
+                        <i data-lucide="linkedin" class="w-7 h-7"></i>
                     </a>
                 </div>
             </div>
@@ -159,8 +284,8 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 py-6">
-        <div class="container mx-auto px-6 text-center text-gray-500">
+    <footer class="bg-gray-950 py-6 border-t border-gray-800">
+        <div class="container mx-auto px-6 text-center text-gray-600 text-sm">
             <p>&copy; 2025 Arman Rostami. All Rights Reserved.</p>
         </div>
     </footer>
@@ -175,22 +300,51 @@
         mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
+        
+        // Project Tabs Functionality
+        const tabsContainer = document.getElementById('project-tabs');
+        const projectTabs = document.querySelectorAll('.project-tab');
+        const projectGrids = document.querySelectorAll('.project-grid');
 
-        // Close mobile menu when a link is clicked
-        const mobileMenuLinks = document.querySelectorAll('#mobile-menu a');
-        mobileMenuLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
+        tabsContainer.addEventListener('click', (e) => {
+            const clickedTab = e.target.closest('button');
+            if (!clickedTab) return;
+
+            // Update active tab style
+            projectTabs.forEach(tab => {
+                tab.classList.remove('active');
+                tab.classList.add('text-gray-400', 'hover:bg-gray-800');
             });
+            clickedTab.classList.add('active');
+            clickedTab.classList.remove('text-gray-400', 'hover:bg-gray-800');
+            
+            // Hide all grids
+            projectGrids.forEach(grid => {
+                grid.classList.add('hidden');
+            });
+
+            // Show target grid
+            const targetGridId = clickedTab.dataset.target;
+            const targetGrid = document.getElementById(targetGridId);
+            if (targetGrid) {
+                targetGrid.classList.remove('hidden');
+            }
         });
 
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+
+        // Close mobile menu and smooth scroll
+        const allLinks = document.querySelectorAll('#mobile-menu a, nav a');
+        allLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                if(link.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                    document.querySelector(link.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    if (!mobileMenu.classList.contains('hidden')) {
+                         mobileMenu.classList.add('hidden');
+                    }
+                }
             });
         });
     </script>
